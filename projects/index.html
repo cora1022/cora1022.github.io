@@ -3,8 +3,16 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="황영연의 GitHub 프로젝트 목록입니다.">
-  <title>프로젝트 · 황영연</title>
+  <meta name="description" content="황영연의 GitHub 레포지토리 목록입니다.">
+  <title>레포지토리 · 황영연</title>
+  <script>
+    (function () {
+      var theme = localStorage.getItem("theme");
+      if (theme === "dark" || theme === "light") {
+        document.documentElement.dataset.theme = theme;
+      }
+    }());
+  </script>
   <link rel="stylesheet" href="../assets/css/styles.css">
   <script defer src="../assets/js/main.js"></script>
 </head>
@@ -20,9 +28,9 @@
     </a>
     <nav class="nav-links" aria-label="주요 메뉴">
       <a href="https://cora1022.github.io/blog/">개발기록</a>
-      <a class="active" href="index.html">Repos</a>
+      <a class="active" href="index.html">레포지토리</a>
       <a href="../index.html#stack">기술 스택</a>
-      <a href="../index.html#contact">Contact</a>
+      <a href="../index.html#contact">연락처</a>
       <a href="https://cora1022.github.io/blog/">글 전체</a>
       <a href="https://github.com/cora1022" rel="noreferrer" target="_blank">GitHub</a>
       <button class="icon-button" type="button" data-theme-toggle aria-label="테마 변경">
@@ -34,38 +42,12 @@
   <main class="page-shell">
     <section class="page-title">
       <p class="eyebrow">Repository Gallery</p>
-      <h1>프로젝트</h1>
+      <h1>레포지토리</h1>
       <p>GitHub, Pages demo, YouTube 링크를 프로젝트별로 연결합니다.</p>
     </section>
 
     <section class="project-grid" data-project-grid aria-label="프로젝트 목록"></section>
   </main>
-
-  <dialog class="project-dialog" data-project-dialog aria-labelledby="project-dialog-title">
-    <button class="dialog-close" type="button" data-dialog-close aria-label="닫기">×</button>
-    <img class="dialog-image" data-dialog-image alt="">
-    <div class="dialog-body">
-      <p class="eyebrow" data-dialog-kicker>Project</p>
-      <h2 id="project-dialog-title" data-dialog-title>프로젝트</h2>
-      <p data-dialog-summary></p>
-      <dl class="dialog-meta">
-        <div>
-          <dt>Language</dt>
-          <dd data-dialog-language></dd>
-        </div>
-        <div>
-          <dt>Status</dt>
-          <dd data-dialog-status></dd>
-        </div>
-      </dl>
-      <ul class="dialog-highlights" data-dialog-highlights></ul>
-      <section class="readme-panel" aria-labelledby="readme-title">
-        <h3 id="readme-title">README.md</h3>
-        <div class="readme-content" data-dialog-readme>README를 불러오는 중입니다.</div>
-      </section>
-      <div class="dialog-actions" data-dialog-actions></div>
-    </div>
-  </dialog>
 
   <footer class="site-footer">
     <span>© <span data-year></span> 황영연</span>

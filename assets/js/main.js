@@ -1,10 +1,7 @@
 (function () {
   var root = document.documentElement;
   var savedTheme = localStorage.getItem("theme");
-  var scriptUrl = document.currentScript ? document.currentScript.src : "";
-  var heroFallbackImage = scriptUrl
-    ? new URL("../img/github-workspace-hero.png", scriptUrl).href
-    : "assets/img/github-workspace-hero.png";
+  var themeAnimationTimer = 0;
 
   var projects = [
     {
@@ -14,7 +11,8 @@
       repo: "OpenCV-pj-Fashion-Model",
       language: "Python",
       status: "Prototype",
-      summary: "OpenCV/YOLO 전처리로 의류 영역을 먼저 분리하고, FashionCLIP 임베딩과 Qdrant 벡터 검색으로 유사한 패션 이미지를 찾는 프로젝트입니다.",
+      tech: ["Python", "OpenCV", "OpenCLIP", "Qdrant"],
+      summary: "OpenCV/YOLO 전처리로 의류 영역을 먼저 분리하고, OpenCLIP 임베딩과 Qdrant 벡터 검색으로 유사한 패션 이미지를 찾는 프로젝트입니다.",
       highlights: [
         "OpenCVCropService에서 원본 이미지를 디코딩하고 의류 관심 영역을 crop합니다.",
         "FastAPI, React, MySQL, Qdrant를 연결한 검색 흐름을 구성했습니다.",
@@ -24,7 +22,7 @@
       page: "",
       youtube: "",
       image: "https://opengraph.githubassets.com/cora1022-portfolio/cora1022/OpenCV-pj-Fashion-Model",
-      badges: ["GitHub", "OpenCV", "Qdrant"],
+      action: { type: "youtube", label: "YouTube", url: "https://www.youtube.com/" },
       featured: true
     },
     {
@@ -34,6 +32,7 @@
       repo: "robot",
       language: "Python",
       status: "Public",
+      tech: ["Python", "Raspberry Pi", "Gemini API"],
       summary: "Raspberry Pi 기반 로봇을 자연어 명령으로 제어하는 Python 프로젝트입니다.",
       highlights: [
         "사용자 명령과 전방 거리 정보를 Gemini function calling에 전달합니다.",
@@ -44,7 +43,7 @@
       page: "",
       youtube: "",
       image: "assets/img/robot-project-thumbnail.png",
-      badges: ["GitHub", "Robot", "README"],
+      action: { type: "youtube", label: "YouTube", url: "https://www.youtube.com/" },
       featured: true
     },
     {
@@ -54,6 +53,7 @@
       repo: "Urban-Waste-Statistics-Simulation",
       language: "JavaScript",
       status: "Pages demo",
+      tech: ["JavaScript", "Canvas", "CSV"],
       summary: "건물 유형과 인구 배율을 조정하면서 도시 폐기물 데이터를 합성하고 CSV로 내보낼 수 있는 시뮬레이션입니다.",
       highlights: [
         "건물 유형, 폐기물 종류, 카테고리 키를 배열로 관리합니다.",
@@ -64,7 +64,7 @@
       page: "https://cora1022.github.io/Urban-Waste-Statistics-Simulation/",
       youtube: "",
       image: "assets/img/urban-simulation-thumbnail.png",
-      badges: ["GitHub", "Pages", "Simulation"],
+      action: { type: "page", label: "Page", url: "https://cora1022.github.io/Urban-Waste-Statistics-Simulation/" },
       featured: true
     },
     {
@@ -74,6 +74,7 @@
       repo: "SilverRoom",
       language: "Java",
       status: "Personal tool",
+      tech: ["Java", "Spring Boot", "H2", "Docker"],
       summary: ".txt와 .md 문서를 업로드하고 버전, 댓글, 해결 상태를 한 화면에서 확인하는 개인용 문서 리뷰룸입니다.",
       highlights: [
         "입장 코드와 닉네임 기반으로 가볍게 협업 공간에 들어갑니다.",
@@ -83,8 +84,7 @@
       github: "https://github.com/cora1022/SilverRoom",
       page: "",
       youtube: "",
-      image: "https://opengraph.githubassets.com/cora1022-portfolio/cora1022/SilverRoom",
-      badges: ["GitHub", "Spring Boot", "Docs"]
+      image: "https://opengraph.githubassets.com/cora1022-portfolio/cora1022/SilverRoom"
     },
     {
       id: "translator",
@@ -93,6 +93,7 @@
       repo: "translator",
       language: "JavaScript",
       status: "Early stage",
+      tech: ["React", "JavaScript", "STT"],
       summary: "React 기반 번역/STT 웹 앱을 만들기 위한 초기 프로젝트입니다. 음성 인식, 번역 API, 서버 연동을 붙여갈 수 있는 자리입니다.",
       highlights: [
         "Create React App 구조에서 STT와 번역 기능을 확장할 수 있습니다.",
@@ -102,8 +103,7 @@
       github: "https://github.com/cora1022/translator",
       page: "",
       youtube: "",
-      image: "https://opengraph.githubassets.com/cora1022-portfolio/cora1022/translator",
-      badges: ["GitHub", "React", "STT"]
+      image: "https://opengraph.githubassets.com/cora1022-portfolio/cora1022/translator"
     },
     {
       id: "smart-quiz",
@@ -112,6 +112,7 @@
       repo: "exam",
       language: "JavaScript",
       status: "Static app",
+      tech: ["HTML", "CSS", "JavaScript"],
       summary: "시험 기간에 빠르게 문제를 풀고 복습하기 위한 브라우저 기반 퀴즈 도구입니다.",
       highlights: [
         "과목 선택, 순차 모드, 랜덤 모드로 문제를 풀 수 있습니다.",
@@ -122,7 +123,7 @@
       page: "",
       youtube: "",
       image: "https://opengraph.githubassets.com/cora1022-portfolio/cora1022/exam",
-      badges: ["GitHub", "Quiz", "Study"]
+      action: { type: "youtube", label: "YouTube", url: "https://www.youtube.com/" }
     }
   ];
 
@@ -132,6 +133,12 @@
     root.dataset.theme = savedTheme;
   }
 
+  window.setTimeout(function () {
+    document.querySelectorAll(".hero-scene-enter").forEach(function (scene) {
+      scene.classList.remove("hero-scene-enter");
+    });
+  }, 1200);
+
   document.querySelectorAll("[data-year]").forEach(function (node) {
     node.textContent = new Date().getFullYear();
   });
@@ -140,16 +147,28 @@
     button.addEventListener("click", function () {
       var current = root.dataset.theme || "light";
       var next = current === "dark" ? "light" : "dark";
+      window.clearTimeout(themeAnimationTimer);
+      document.querySelectorAll(".hero-scene-enter").forEach(function (scene) {
+        scene.classList.remove("hero-scene-enter");
+      });
+      root.classList.remove("theme-changing");
+      void root.offsetWidth;
+      root.classList.add("theme-changing");
       root.dataset.theme = next;
       localStorage.setItem("theme", next);
+      themeAnimationTimer = window.setTimeout(function () {
+        root.classList.remove("theme-changing");
+      }, 950);
     });
   });
 
   function flashButton(button, text) {
-    var previous = button.textContent;
-    button.textContent = text;
+    var label = button.querySelector("span:not(.contact-icon)");
+    var target = label || button;
+    var previous = target.textContent;
+    target.textContent = text;
     window.setTimeout(function () {
-      button.textContent = previous;
+      target.textContent = previous;
     }, 1400);
   }
 
@@ -232,11 +251,57 @@
     return preview;
   }
 
+  function createProjectActionIcon(type) {
+    var icon = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    icon.setAttribute("viewBox", "0 0 24 24");
+    icon.setAttribute("aria-hidden", "true");
+
+    var path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    if (type === "youtube") {
+      path.setAttribute("d", "M21.6 7.2a2.7 2.7 0 0 0-1.9-1.9C18 4.9 12 4.9 12 4.9s-6 0-7.7.4a2.7 2.7 0 0 0-1.9 1.9A28.2 28.2 0 0 0 2 12a28.2 28.2 0 0 0 .4 4.8 2.7 2.7 0 0 0 1.9 1.9c1.7.4 7.7.4 7.7.4s6 0 7.7-.4a2.7 2.7 0 0 0 1.9-1.9A28.2 28.2 0 0 0 22 12a28.2 28.2 0 0 0-.4-4.8ZM10 15.1V8.9l5.2 3.1L10 15.1Z");
+    } else {
+      path.setAttribute("d", "M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3ZM5 5h6v2H7v10h10v-4h2v6H5V5Z");
+    }
+
+    icon.appendChild(path);
+    return icon;
+  }
+
+  function createProjectAction(action) {
+    if (!action.url) {
+      return null;
+    }
+
+    var element = document.createElement("a");
+    element.href = action.url;
+    element.target = "_blank";
+    element.rel = "noreferrer";
+    element.setAttribute("aria-label", action.label + " 열기");
+    element.className = "project-action project-action-" + action.type;
+    element.title = action.label;
+    element.appendChild(createProjectActionIcon(action.type));
+    element.appendChild(createTextElement("span", "", action.label));
+    return element;
+  }
+
+  function createProjectTechList(project) {
+    var techList = document.createElement("span");
+    techList.className = "project-tech-list";
+    (project.tech || [project.language]).forEach(function (tech) {
+      techList.appendChild(createTextElement("span", "project-tech", tech));
+    });
+    return techList;
+  }
+
   function createProjectCard(project) {
-    var button = document.createElement("button");
-    button.className = "project-card";
-    button.type = "button";
-    button.setAttribute("data-open-project", project.id);
+    var card = document.createElement("article");
+    card.className = "project-card";
+    var mainLink = document.createElement("a");
+    mainLink.className = "project-card-main";
+    mainLink.href = project.github;
+    mainLink.target = "_blank";
+    mainLink.rel = "noreferrer";
+    mainLink.setAttribute("aria-label", project.title + " GitHub 저장소 열기");
 
     var image = null;
     if (project.preferPreview) {
@@ -258,30 +323,30 @@
     var body = document.createElement("span");
     body.className = "project-card-body";
 
-    body.appendChild(createTextElement("span", "meta", project.kicker));
+    body.appendChild(createProjectTechList(project));
     var title = createTextElement("span", "project-card-title", project.title);
     if (project.featured) {
-      button.classList.add("is-featured");
+      card.classList.add("is-featured");
       title.prepend(createStarIcon());
     }
     body.appendChild(title);
     body.appendChild(createTextElement("span", "project-card-summary", project.summary));
 
-    var badges = document.createElement("span");
-    badges.className = "project-badges";
-    project.badges.forEach(function (badge) {
-      badges.appendChild(createTextElement("span", "", badge));
-    });
-    body.appendChild(badges);
+    mainLink.appendChild(image);
+    mainLink.appendChild(body);
+    card.appendChild(mainLink);
 
-    button.appendChild(image);
-    button.appendChild(body);
+    if (project.action) {
+      var actionLink = createProjectAction(project.action);
+      var actions = document.createElement("span");
+      actions.className = "project-card-actions";
+      if (actionLink) {
+        actions.appendChild(actionLink);
+        card.appendChild(actions);
+      }
+    }
 
-    button.addEventListener("click", function () {
-      openProject(project.id);
-    });
-
-    return button;
+    return card;
   }
 
   function renderProjects() {
@@ -290,249 +355,6 @@
       projects.forEach(function (project) {
         grid.appendChild(createProjectCard(project));
       });
-    });
-  }
-
-  var dialog = document.querySelector("[data-project-dialog]");
-  var readmeCache = {};
-  var activeReadmeRepo = "";
-
-  function createAction(label, url, styleName) {
-    if (!url) {
-      var disabled = document.createElement("span");
-      disabled.className = "button disabled";
-      disabled.textContent = label + " 준비중";
-      return disabled;
-    }
-
-    var link = document.createElement("a");
-    link.className = "button " + styleName;
-    link.href = url;
-    link.target = "_blank";
-    link.rel = "noreferrer";
-    link.textContent = label;
-    return link;
-  }
-
-  function decodeBase64Utf8(value) {
-    var binary = window.atob(value.replace(/\n/g, ""));
-    var bytes = new Uint8Array(binary.length);
-    for (var index = 0; index < binary.length; index += 1) {
-      bytes[index] = binary.charCodeAt(index);
-    }
-    return new TextDecoder("utf-8").decode(bytes);
-  }
-
-  function fetchReadme(repo) {
-    if (readmeCache[repo]) {
-      return readmeCache[repo];
-    }
-
-    readmeCache[repo] = fetch("https://api.github.com/repos/cora1022/" + encodeURIComponent(repo) + "/readme")
-      .then(function (response) {
-        if (!response.ok) {
-          throw new Error("README request failed");
-        }
-        return response.json();
-      })
-      .then(function (data) {
-        return decodeBase64Utf8(data.content || "");
-      });
-
-    return readmeCache[repo];
-  }
-
-  function appendParagraph(container, lines) {
-    if (!lines.length) {
-      return;
-    }
-
-    container.appendChild(createTextElement("p", "", lines.join(" ")));
-    lines.length = 0;
-  }
-
-  function renderReadmeMarkdown(container, markdown) {
-    container.innerHTML = "";
-
-    var lines = markdown.split(/\r?\n/);
-    var paragraph = [];
-    var list = null;
-    var codeLines = [];
-    var inCodeBlock = false;
-
-    function closeList() {
-      if (list) {
-        container.appendChild(list);
-        list = null;
-      }
-    }
-
-    lines.forEach(function (line) {
-      var trimmed = line.trim();
-
-      if (trimmed.indexOf("```") === 0) {
-        appendParagraph(container, paragraph);
-        closeList();
-
-        if (inCodeBlock) {
-          var pre = document.createElement("pre");
-          var code = document.createElement("code");
-          code.textContent = codeLines.join("\n");
-          pre.appendChild(code);
-          container.appendChild(pre);
-          codeLines = [];
-          inCodeBlock = false;
-        } else {
-          inCodeBlock = true;
-        }
-        return;
-      }
-
-      if (inCodeBlock) {
-        codeLines.push(line);
-        return;
-      }
-
-      if (!trimmed) {
-        appendParagraph(container, paragraph);
-        closeList();
-        return;
-      }
-
-      if (/^!\[[^\]]*\]\([^)]+\)/.test(trimmed)) {
-        return;
-      }
-
-      var heading = trimmed.match(/^(#{1,4})\s+(.+)$/);
-      if (heading) {
-        appendParagraph(container, paragraph);
-        closeList();
-        container.appendChild(createTextElement("h" + Math.min(heading[1].length + 2, 4), "", heading[2]));
-        return;
-      }
-
-      var bullet = trimmed.match(/^[-*]\s+(.+)$/);
-      if (bullet) {
-        appendParagraph(container, paragraph);
-        if (!list) {
-          list = document.createElement("ul");
-        }
-        list.appendChild(createTextElement("li", "", bullet[1]));
-        return;
-      }
-
-      paragraph.push(trimmed.replace(/\*\*/g, "").replace(/`/g, ""));
-    });
-
-    appendParagraph(container, paragraph);
-    closeList();
-
-    if (inCodeBlock && codeLines.length) {
-      var pre = document.createElement("pre");
-      var code = document.createElement("code");
-      code.textContent = codeLines.join("\n");
-      pre.appendChild(code);
-      container.appendChild(pre);
-    }
-
-    if (!container.children.length) {
-      container.textContent = "README에 표시할 텍스트가 없습니다.";
-    }
-  }
-
-  function loadReadmeIntoDialog(project) {
-    var readme = dialog.querySelector("[data-dialog-readme]");
-    if (!readme || !window.fetch) {
-      return;
-    }
-
-    readme.textContent = "README를 불러오는 중입니다.";
-    activeReadmeRepo = project.repo;
-
-    fetchReadme(project.repo)
-      .then(function (markdown) {
-        if (activeReadmeRepo !== project.repo) {
-          return;
-        }
-        renderReadmeMarkdown(readme, markdown);
-      })
-      .catch(function () {
-        if (activeReadmeRepo !== project.repo) {
-          return;
-        }
-        readme.textContent = "README를 불러올 수 없습니다. 저장소가 비공개이거나 README.md가 없을 수 있습니다.";
-      });
-  }
-
-  function openProject(projectId) {
-    if (!dialog) {
-      return;
-    }
-
-    var project = projects.find(function (item) {
-      return item.id === projectId;
-    });
-
-    if (!project) {
-      return;
-    }
-
-    var dialogImage = dialog.querySelector("[data-dialog-image]");
-    dialogImage.classList.remove("is-fallback");
-    dialogImage.onerror = function () {
-      if (dialogImage.src !== heroFallbackImage) {
-        dialogImage.classList.add("is-fallback");
-        dialogImage.alt = "GitHub 작업 화면 배경 이미지";
-        dialogImage.src = heroFallbackImage;
-      }
-    };
-    dialogImage.src = project.image;
-    dialogImage.alt = project.title + " GitHub 미리보기";
-    dialog.querySelector("[data-dialog-kicker]").textContent = project.kicker;
-    dialog.querySelector("[data-dialog-title]").textContent = project.title;
-    dialog.querySelector("[data-dialog-summary]").textContent = project.summary;
-    dialog.querySelector("[data-dialog-language]").textContent = project.language;
-    dialog.querySelector("[data-dialog-status]").textContent = project.status;
-
-    var highlights = dialog.querySelector("[data-dialog-highlights]");
-    highlights.innerHTML = "";
-    project.highlights.forEach(function (highlight) {
-      highlights.appendChild(createTextElement("li", "", highlight));
-    });
-
-    var actions = dialog.querySelector("[data-dialog-actions]");
-    actions.innerHTML = "";
-    actions.appendChild(createAction("GitHub", project.github, "primary"));
-    actions.appendChild(createAction("GitHub Pages", project.page, "secondary"));
-    actions.appendChild(createAction("YouTube", project.youtube, "secondary"));
-    loadReadmeIntoDialog(project);
-
-    if (typeof dialog.showModal === "function") {
-      dialog.showModal();
-      document.body.classList.add("dialog-lock");
-    }
-  }
-
-  if (dialog) {
-    dialog.querySelector("[data-dialog-close]").addEventListener("click", function () {
-      dialog.close();
-    });
-
-    dialog.addEventListener("click", function (event) {
-      var rect = dialog.getBoundingClientRect();
-      var isBackdropClick =
-        event.clientX < rect.left ||
-        event.clientX > rect.right ||
-        event.clientY < rect.top ||
-        event.clientY > rect.bottom;
-
-      if (isBackdropClick) {
-        dialog.close();
-      }
-    });
-
-    dialog.addEventListener("close", function () {
-      document.body.classList.remove("dialog-lock");
     });
   }
 

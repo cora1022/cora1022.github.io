@@ -37,7 +37,7 @@ Then enable GitHub Pages from the repository settings if it is not enabled autom
 
 - Site identity: `황영연`
 - Positioning: backend developer in progress
-- Hero image: `assets/img/github-workspace-hero.png`
+- Hero background: animated CSS day/night scene
 - Blog URL: `https://cora1022.github.io/blog/`
 - Blog source folder: `../blog`
 - Project modal data: `assets/js/main.js`

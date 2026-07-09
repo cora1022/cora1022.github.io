@@ -8,6 +8,14 @@
   <meta property="og:description" content="GitHub repositories, project demos, blog links.">
   <meta property="og:image" content="https://avatars.githubusercontent.com/u/218171329?v=4">
   <title>cora1022</title>
+  <script>
+    (function () {
+      var theme = localStorage.getItem("theme");
+      if (theme === "dark" || theme === "light") {
+        document.documentElement.dataset.theme = theme;
+      }
+    }());
+  </script>
   <link rel="stylesheet" href="assets/css/styles.css">
   <script defer src="assets/js/main.js"></script>
 </head>
@@ -23,11 +31,9 @@
     </a>
     <nav class="nav-links" aria-label="주요 메뉴">
       <a href="https://cora1022.github.io/blog/">개발기록</a>
-      <a href="#projects">Repos</a>
+      <a href="#projects">레포지토리</a>
       <a href="#stack">기술 스택</a>
-      <a href="#contact">Contact</a>
-      <a href="https://cora1022.github.io/blog/">글 전체</a>
-      <a href="https://github.com/cora1022" rel="noreferrer" target="_blank">GitHub</a>
+      <a href="#contact">연락처</a>
       <button class="icon-button" type="button" data-theme-toggle aria-label="테마 변경">
         <span aria-hidden="true">◐</span>
       </button>
@@ -36,6 +42,24 @@
 
   <main>
     <section class="hero" id="about" aria-labelledby="hero-title">
+      <div class="hero-scene hero-scene-enter" aria-hidden="true">
+        <span class="sky-band sky-band-one"></span>
+        <span class="sky-band sky-band-two"></span>
+        <span class="stars stars-one"></span>
+        <span class="stars stars-two"></span>
+        <span class="celestial">
+          <span class="sun"></span>
+          <span class="moon"></span>
+        </span>
+        <span class="cloud cloud-one"></span>
+        <span class="cloud cloud-two"></span>
+        <span class="sparkle sparkle-one"></span>
+        <span class="sparkle sparkle-two"></span>
+        <span class="hill hill-back"></span>
+        <span class="hill hill-front"></span>
+        <span class="tree tree-one"></span>
+        <span class="tree tree-two"></span>
+      </div>
       <div class="hero-inner">
         <h1 id="hero-title">cora1022</h1>
         <p class="hero-lead">
@@ -60,19 +84,26 @@
 
     <section class="band writing-band" id="writing" aria-labelledby="writing-title">
       <div class="section-copy">
+        <p class="eyebrow">Development Log</p>
         <h2 id="writing-title">개발기록</h2>
         <p>별도 저장소에서 관리하는 개발 기록입니다.</p>
       </div>
       <div class="blog-title-list" aria-label="개발기록 글 목록">
-        <a href="https://cora1022.github.io/blog/">개발기록 홈</a>
-        <a href="https://cora1022.github.io/blog/posts/nypc-next-nation-84th.html">NYPC NEXT NATION 예선 탈락기</a>
-        <a href="https://cora1022.github.io/blog/posts/nypc-next-nation-replay.html">NYPC NEXT NATION 개발 리플레이</a>
+        <a href="https://cora1022.github.io/blog/posts/nypc-next-nation-84th.html">
+          <time datetime="2026-07">2026.07</time>
+          <span>NYPC NEXT NATION 예선 탈락기</span>
+        </a>
+        <a href="https://cora1022.github.io/blog/posts/nypc-next-nation-replay.html">
+          <time datetime="2026-06-29">2026.06.29</time>
+          <span>NYPC NEXT NATION 개발 리플레이</span>
+        </a>
       </div>
     </section>
 
     <section class="band projects-band" id="projects" aria-labelledby="projects-title">
       <div class="section-copy">
-        <h2 id="projects-title">Repositories</h2>
+        <p class="eyebrow">Repository Gallery</p>
+        <h2 id="projects-title">레포지토리</h2>
         <p>GitHub, Pages demo, YouTube 링크를 프로젝트별로 연결합니다.</p>
       </div>
       <div class="project-grid" data-project-grid aria-live="polite"></div>
@@ -80,12 +111,16 @@
 
     <section class="band stack-band" id="stack" aria-labelledby="stack-title">
       <div class="section-copy">
+        <p class="eyebrow">Skills</p>
         <h2 id="stack-title">기술 스택</h2>
       </div>
       <ul class="stack-list" aria-label="기술 스택">
         <li>
           <div>
-            <strong>Backend</strong>
+            <span class="stack-heading">
+              <strong>Backend</strong>
+              <small>API · Server · Data</small>
+            </span>
             <span class="tech-row">
               <span class="tech-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg" alt="">Java</span>
               <span class="tech-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/spring/spring-original.svg" alt="">Spring Boot</span>
@@ -97,33 +132,43 @@
         </li>
         <li>
           <div>
-            <strong>Frontend / Language</strong>
+            <span class="stack-heading">
+              <strong>Frontend / Language</strong>
+              <small>UI · Runtime · Logic</small>
+            </span>
             <span class="tech-row">
               <span class="tech-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" alt="">JavaScript</span>
               <span class="tech-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg" alt="">TypeScript</span>
               <span class="tech-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg" alt="">React</span>
-              <span class="tech-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cplusplus/cplusplus-original.svg" alt="">C++</span>
             </span>
           </div>
         </li>
         <li>
           <div>
-            <strong>Tools</strong>
+            <span class="stack-heading">
+              <strong>Tools</strong>
+              <small>Deploy · Versioning · Workflow</small>
+            </span>
             <span class="tech-row">
               <span class="tech-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg" alt="">Docker</span>
               <span class="tech-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg" alt="">Git</span>
-              <span class="tech-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg" alt="">GitHub</span>
-              <span class="tech-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/githubactions/githubactions-original.svg" alt="">GitHub Pages</span>
+              <span class="tech-chip"><img class="tech-logo-mono" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg" alt="">GitHub</span>
             </span>
           </div>
         </li>
         <li>
           <div>
-            <strong>Experience</strong>
-            <span class="tech-row">
-              <span class="tech-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/opencv/opencv-original.svg" alt="">OpenCV</span>
-              <span class="tech-chip text-logo">FashionCLIP</span>
-              <span class="tech-chip"><img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/qdrant.svg" alt="">Qdrant</span>
+            <span class="stack-heading">
+              <strong>Experience</strong>
+              <small>Vision · Vector Search · Robotics</small>
+            </span>
+              <span class="tech-row">
+                <span class="tech-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/opencv/opencv-original.svg" alt="">OpenCV</span>
+              <span class="tech-chip tech-chip-openclip">
+                <img class="tech-logo-mono" src="assets/img/image.png" alt="">
+                OpenCLIP
+              </span>
+              <span class="tech-chip"><img class="tech-logo-mono" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/qdrant.svg" alt="">Qdrant</span>
               <span class="tech-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/raspberrypi/raspberrypi-original.svg" alt="">Raspberry Pi</span>
             </span>
           </div>
@@ -133,50 +178,34 @@
 
     <section class="band contact-band" id="contact" aria-labelledby="contact-title">
       <div class="section-copy">
-        <h2 id="contact-title">Links</h2>
+        <p class="eyebrow">Contact Links</p>
+        <h2 id="contact-title">연락처</h2>
       </div>
       <div class="contact-grid">
         <a href="mailto:7fvnjg5@gmail.com">
-          <span>Email</span>
+          <span class="contact-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M3 5h18v14H3V5Zm2.2 2 6.8 5.1L18.8 7H5.2ZM5 9.1V17h14V9.1l-7 5.2-7-5.2Z"/></svg>
+          </span>
+          <span>Gmail</span>
           <strong>7fvnjg5@gmail.com</strong>
         </a>
         <button type="button" data-copy-text="cora1022">
+          <span class="contact-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M19.5 5.2A15 15 0 0 0 15.8 4l-.2.4c1.3.3 2 .7 2 .7a12.4 12.4 0 0 0-11.2 0s.7-.4 2-.7L8.2 4a15 15 0 0 0-3.7 1.2C2.2 8.6 1.6 11.9 1.9 15.1A15 15 0 0 0 6.5 17.4l.9-1.2c-.5-.2-1-.5-1.5-.8l.4-.3a10.7 10.7 0 0 0 11.4 0l.4.3c-.5.3-1 .6-1.5.8l.9 1.2a15 15 0 0 0 4.6-2.3c.4-3.8-.7-7-2.6-9.9ZM8.4 13.6c-.8 0-1.4-.7-1.4-1.5s.6-1.5 1.4-1.5 1.4.7 1.4 1.5-.6 1.5-1.4 1.5Zm7.2 0c-.8 0-1.4-.7-1.4-1.5s.6-1.5 1.4-1.5 1.4.7 1.4 1.5-.6 1.5-1.4 1.5Z"/></svg>
+          </span>
           <span>Discord</span>
           <strong>cora1022</strong>
         </button>
         <a href="https://github.com/cora1022" rel="noreferrer" target="_blank">
+          <span class="contact-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M12 .7a11.3 11.3 0 0 0-3.57 22c.57.1.78-.25.78-.55v-2.16c-3.18.69-3.85-1.35-3.85-1.35-.52-1.31-1.27-1.66-1.27-1.66-1.04-.71.08-.7.08-.7 1.15.08 1.75 1.18 1.75 1.18 1.02 1.75 2.68 1.24 3.33.95.1-.74.4-1.24.72-1.52-2.54-.29-5.21-1.27-5.21-5.64 0-1.25.45-2.27 1.18-3.07-.12-.29-.51-1.46.11-3.03 0 0 .96-.31 3.14 1.17a10.86 10.86 0 0 1 5.72 0c2.18-1.48 3.14-1.17 3.14-1.17.62 1.57.23 2.74.11 3.03.74.8 1.18 1.82 1.18 3.07 0 4.38-2.68 5.35-5.23 5.63.41.36.77 1.06.77 2.14v3.17c0 .3.21.66.79.55A11.3 11.3 0 0 0 12 .7Z"/></svg>
+          </span>
           <span>GitHub</span>
           <strong>github.com/cora1022</strong>
         </a>
       </div>
     </section>
   </main>
-
-  <dialog class="project-dialog" data-project-dialog aria-labelledby="project-dialog-title">
-    <button class="dialog-close" type="button" data-dialog-close aria-label="닫기">×</button>
-    <img class="dialog-image" data-dialog-image alt="">
-    <div class="dialog-body">
-      <p class="eyebrow" data-dialog-kicker>Project</p>
-      <h2 id="project-dialog-title" data-dialog-title>프로젝트</h2>
-      <p data-dialog-summary></p>
-      <dl class="dialog-meta">
-        <div>
-          <dt>Language</dt>
-          <dd data-dialog-language></dd>
-        </div>
-        <div>
-          <dt>Status</dt>
-          <dd data-dialog-status></dd>
-        </div>
-      </dl>
-      <ul class="dialog-highlights" data-dialog-highlights></ul>
-      <section class="readme-panel" aria-labelledby="readme-title">
-        <h3 id="readme-title">README.md</h3>
-        <div class="readme-content" data-dialog-readme>README를 불러오는 중입니다.</div>
-      </section>
-      <div class="dialog-actions" data-dialog-actions></div>
-    </div>
-  </dialog>
 
   <footer class="site-footer">
     <span>© <span data-year></span> 황영연</span>

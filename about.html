@@ -5,6 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="황영연 소개 페이지입니다.">
   <title>소개 · 황영연</title>
+  <script>
+    (function () {
+      var theme = localStorage.getItem("theme");
+      if (theme === "dark" || theme === "light") {
+        document.documentElement.dataset.theme = theme;
+      }
+    }());
+  </script>
   <link rel="stylesheet" href="assets/css/styles.css">
   <script defer src="assets/js/main.js"></script>
 </head>
@@ -20,10 +28,10 @@
     </a>
     <nav class="nav-links" aria-label="주요 메뉴">
       <a href="https://cora1022.github.io/blog/">개발기록</a>
-      <a href="index.html#projects">Repos</a>
+      <a href="index.html#projects">레포지토리</a>
       <a href="index.html#stack">기술 스택</a>
-      <a href="index.html#contact">Contact</a>
-      <a href="projects/index.html">프로젝트 전체</a>
+      <a href="index.html#contact">연락처</a>
+      <a href="projects/index.html">레포지토리 전체</a>
       <a href="https://github.com/cora1022" rel="noreferrer" target="_blank">GitHub</a>
       <button class="icon-button" type="button" data-theme-toggle aria-label="테마 변경">
         <span aria-hidden="true">◐</span>
