@@ -1,10 +1,16 @@
 # 황영연 GitHub Pages
 
-Static GitHub Pages introduction site for 황영연, with blog posts, project modals, skills, and contact links.
+Static GitHub Pages portfolio hub for 황영연, with a GitHub repository gallery, project modals, skills, contact links, and an outbound blog entry point.
 
 ## Local Preview
 
 Open `index.html` directly in a browser.
+
+Main local entry points:
+
+- `index.html`
+- `projects/index.html`
+- Blog repository target: `https://cora1022.github.io/blog/`
 
 ## Publish
 
@@ -31,8 +37,10 @@ Then enable GitHub Pages from the repository settings if it is not enabled autom
 
 - Site identity: `황영연`
 - Positioning: backend developer in progress
-- Main retrospective: `posts/nypc-next-nation-84th.html`
-- Development replay: `posts/nypc-next-nation-replay.html`
-- Project/front-page links: `projects/index.html`
-- Main page project modal placeholders: fashion similarity, robot, recycling simulation, simultaneous interpretation
+- Hero image: `assets/img/github-workspace-hero.png`
+- Blog URL: `https://cora1022.github.io/blog/`
+- Blog source folder: `../blog`
+- Project modal data: `assets/js/main.js`
+- Project/front-page rendering: `index.html` and `projects/index.html`
+- YouTube links: add URLs to each project's `youtube` field in `assets/js/main.js`
 - Public scope: full disclosure for NYPC strategy, experiments, and engineering process

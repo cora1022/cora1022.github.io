@@ -3,173 +3,184 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="백엔드 개발자를 지망하는 황영연의 개인 소개 페이지입니다.">
-  <title>황영연 · Backend Developer</title>
+  <meta name="description" content="cora1022의 GitHub 레포지토리, 프로젝트, 블로그 링크를 모은 정적 웹 허브입니다.">
+  <meta property="og:title" content="cora1022">
+  <meta property="og:description" content="GitHub repositories, project demos, blog links.">
+  <meta property="og:image" content="https://avatars.githubusercontent.com/u/218171329?v=4">
+  <title>cora1022</title>
   <link rel="stylesheet" href="assets/css/styles.css">
+  <script defer src="assets/js/main.js"></script>
 </head>
 <body>
   <header class="site-header">
-    <a class="brand" href="index.html" aria-label="황영연 홈">
-      <span class="brand-mark">HY</span>
-      <span>황영연</span>
+    <a class="brand" href="https://github.com/cora1022" rel="noreferrer" target="_blank" aria-label="cora1022 GitHub">
+      <svg class="brand-icon" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M12 .7a11.3 11.3 0 0 0-3.57 22c.57.1.78-.25.78-.55v-2.16c-3.18.69-3.85-1.35-3.85-1.35-.52-1.31-1.27-1.66-1.27-1.66-1.04-.71.08-.7.08-.7 1.15.08 1.75 1.18 1.75 1.18 1.02 1.75 2.68 1.24 3.33.95.1-.74.4-1.24.72-1.52-2.54-.29-5.21-1.27-5.21-5.64 0-1.25.45-2.27 1.18-3.07-.12-.29-.51-1.46.11-3.03 0 0 .96-.31 3.14 1.17a10.86 10.86 0 0 1 5.72 0c2.18-1.48 3.14-1.17 3.14-1.17.62 1.57.23 2.74.11 3.03.74.8 1.18 1.82 1.18 3.07 0 4.38-2.68 5.35-5.23 5.63.41.36.77 1.06.77 2.14v3.17c0 .3.21.66.79.55A11.3 11.3 0 0 0 12 .7Z"/>
+      </svg>
+      <span class="brand-text">
+        <strong>cora1022</strong>
+      </span>
     </a>
     <nav class="nav-links" aria-label="주요 메뉴">
-      <a href="#about">소개</a>
-      <a href="#writing">글</a>
-      <a href="#projects">프로젝트</a>
-      <a href="#skills">기술스택</a>
-      <a href="#contact">연락처</a>
-      <a href="posts/index.html">Blog</a>
-      <button class="icon-button" type="button" data-theme-toggle aria-label="테마 변경">◐</button>
+      <a href="https://cora1022.github.io/blog/">개발기록</a>
+      <a href="#projects">Repos</a>
+      <a href="#stack">기술 스택</a>
+      <a href="#contact">Contact</a>
+      <a href="https://cora1022.github.io/blog/">글 전체</a>
+      <a href="https://github.com/cora1022" rel="noreferrer" target="_blank">GitHub</a>
+      <button class="icon-button" type="button" data-theme-toggle aria-label="테마 변경">
+        <span aria-hidden="true">◐</span>
+      </button>
     </nav>
   </header>
 
   <main>
-    <section class="intro" id="about">
-      <div class="intro-copy">
-        <p class="eyebrow">Backend Developer in Progress</p>
-        <h1>개발에 관심이 많고, 백엔드 개발자를 지망하는 황영연입니다.</h1>
-        <p class="intro-lead">
-          문제를 구조적으로 이해하고, 로그와 데이터를 바탕으로 개선하는 과정에 흥미를 느낍니다.
-          대회 경험, 프로젝트, 실험 기록을 이곳에 모아두고 있습니다.
+    <section class="hero" id="about" aria-labelledby="hero-title">
+      <div class="hero-inner">
+        <h1 id="hero-title">cora1022</h1>
+        <p class="hero-lead">
+          Backend · Automation · Data Flow
         </p>
-        <div class="intro-actions">
-          <a class="button primary" href="mailto:7fvnjg5@gmail.com">이메일 보내기</a>
-          <button class="button secondary" type="button" data-copy-text="cora1022">Discord 복사</button>
-        </div>
       </div>
-
-      <aside class="profile-panel" aria-label="프로필 요약">
-        <div class="profile-art" aria-hidden="true">
-          <span class="node node-a"></span>
-          <span class="node node-b"></span>
-          <span class="node node-c"></span>
-          <span class="trace trace-a"></span>
-          <span class="trace trace-b"></span>
+      <dl class="hero-dock" aria-label="프로필 요약">
+        <div>
+          <dt>Handle</dt>
+          <dd>cora1022</dd>
         </div>
-        <dl class="profile-facts">
-          <div>
-            <dt>Focus</dt>
-            <dd>Backend · System Design · Automation</dd>
-          </div>
-          <div>
-            <dt>Handle</dt>
-            <dd>cora1022</dd>
-          </div>
-          <div>
-            <dt>Email</dt>
-            <dd><a href="mailto:7fvnjg5@gmail.com">7fvnjg5@gmail.com</a></dd>
-          </div>
-        </dl>
-      </aside>
+        <div>
+          <dt>Public repos</dt>
+          <dd data-github-public-repos>15</dd>
+        </div>
+        <div>
+          <dt>Focus</dt>
+          <dd>Backend · Automation · Logs</dd>
+        </div>
+      </dl>
     </section>
 
-    <section class="two-column" aria-label="글과 프로젝트">
-      <div class="writing-panel" id="writing">
-        <div class="section-heading">
-          <p class="eyebrow">Writing</p>
-          <h2>작성한 글</h2>
-          <p>대회 회고와 개발 과정을 글로 정리합니다. NYPC 기록도 이 목록 안의 글 중 하나로 남깁니다.</p>
-        </div>
-
-        <div class="post-stack">
-          <article class="post-card">
-            <p class="meta">NYPC · Strategy Bot · 2026</p>
-            <h3><a href="posts/nypc-next-nation-84th.html">NYPC NEXT NATION 예선 탈락기</a></h3>
-            <p>84등으로 마무리한 전략 봇 개발 회고와 내부 테스트, 실제 아레나의 차이.</p>
-          </article>
-          <article class="post-card">
-            <p class="meta">Replay · Timeline</p>
-            <h3><a href="posts/nypc-next-nation-replay.html">NYPC NEXT NATION 개발 리플레이</a></h3>
-            <p>6월 29일부터 7월 6일까지 모델을 바꿔간 판단 과정을 시간순으로 복기한 글.</p>
-          </article>
-          <article class="post-card muted">
-            <p class="meta">Coming Soon</p>
-            <h3>백엔드 프로젝트 회고</h3>
-            <p>API 설계, 데이터 흐름, 배포 과정에서 배운 내용을 정리할 예정입니다.</p>
-          </article>
-        </div>
+    <section class="band writing-band" id="writing" aria-labelledby="writing-title">
+      <div class="section-copy">
+        <h2 id="writing-title">개발기록</h2>
+        <p>별도 저장소에서 관리하는 개발 기록입니다.</p>
       </div>
-
-      <aside class="project-panel" id="projects">
-        <div class="section-heading compact">
-          <p class="eyebrow">Projects</p>
-          <h2>프로젝트</h2>
-          <p>오른쪽 카드에서 프로젝트 설명을 열 수 있습니다. 실제 페이지나 유튜브 링크는 나중에 연결하면 됩니다.</p>
-        </div>
-
-        <div class="project-stack">
-          <button class="project-tile" type="button" data-open-project="fashion">
-            <span>01</span>
-            <strong>패션 유사도</strong>
-            <small>이미지 기반 추천/비교</small>
-          </button>
-          <button class="project-tile" type="button" data-open-project="robot">
-            <span>02</span>
-            <strong>로봇</strong>
-            <small>제어/자동화 실험</small>
-          </button>
-          <button class="project-tile" type="button" data-open-project="recycle">
-            <span>03</span>
-            <strong>재활용 시뮬레이션</strong>
-            <small>환경 데이터 시각화</small>
-          </button>
-          <button class="project-tile" type="button" data-open-project="translate">
-            <span>04</span>
-            <strong>동시통역</strong>
-            <small>음성/번역 파이프라인</small>
-          </button>
-        </div>
-      </aside>
+      <div class="blog-title-list" aria-label="개발기록 글 목록">
+        <a href="https://cora1022.github.io/blog/">개발기록 홈</a>
+        <a href="https://cora1022.github.io/blog/posts/nypc-next-nation-84th.html">NYPC NEXT NATION 예선 탈락기</a>
+        <a href="https://cora1022.github.io/blog/posts/nypc-next-nation-replay.html">NYPC NEXT NATION 개발 리플레이</a>
+      </div>
     </section>
 
-    <section class="info-grid" id="skills">
-      <article class="info-card">
-        <p class="eyebrow">Skills</p>
-        <h2>기술스택</h2>
-        <ul class="tag-list">
-          <li>C++</li>
-          <li>Python</li>
-          <li>JavaScript</li>
-          <li>Backend</li>
-          <li>API</li>
-          <li>Automation</li>
-          <li>Log Analysis</li>
-          <li>GitHub Pages</li>
-        </ul>
-      </article>
+    <section class="band projects-band" id="projects" aria-labelledby="projects-title">
+      <div class="section-copy">
+        <h2 id="projects-title">Repositories</h2>
+        <p>GitHub, Pages demo, YouTube 링크를 프로젝트별로 연결합니다.</p>
+      </div>
+      <div class="project-grid" data-project-grid aria-live="polite"></div>
+    </section>
 
-      <article class="info-card" id="contact">
-        <p class="eyebrow">Contact</p>
-        <h2>연락처</h2>
-        <div class="contact-list">
-          <a href="mailto:7fvnjg5@gmail.com">7fvnjg5@gmail.com</a>
-          <button type="button" data-copy-text="cora1022">Discord: cora1022 복사</button>
-          <a href="https://github.com/cora1022" rel="noreferrer">github.com/cora1022</a>
-        </div>
-      </article>
+    <section class="band stack-band" id="stack" aria-labelledby="stack-title">
+      <div class="section-copy">
+        <h2 id="stack-title">기술 스택</h2>
+      </div>
+      <ul class="stack-list" aria-label="기술 스택">
+        <li>
+          <div>
+            <strong>Backend</strong>
+            <span class="tech-row">
+              <span class="tech-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg" alt="">Java</span>
+              <span class="tech-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/spring/spring-original.svg" alt="">Spring Boot</span>
+              <span class="tech-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" alt="">Python</span>
+              <span class="tech-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/fastapi/fastapi-original.svg" alt="">FastAPI</span>
+              <span class="tech-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg" alt="">MySQL</span>
+            </span>
+          </div>
+        </li>
+        <li>
+          <div>
+            <strong>Frontend / Language</strong>
+            <span class="tech-row">
+              <span class="tech-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" alt="">JavaScript</span>
+              <span class="tech-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg" alt="">TypeScript</span>
+              <span class="tech-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg" alt="">React</span>
+              <span class="tech-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cplusplus/cplusplus-original.svg" alt="">C++</span>
+            </span>
+          </div>
+        </li>
+        <li>
+          <div>
+            <strong>Tools</strong>
+            <span class="tech-row">
+              <span class="tech-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg" alt="">Docker</span>
+              <span class="tech-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg" alt="">Git</span>
+              <span class="tech-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg" alt="">GitHub</span>
+              <span class="tech-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/githubactions/githubactions-original.svg" alt="">GitHub Pages</span>
+            </span>
+          </div>
+        </li>
+        <li>
+          <div>
+            <strong>Experience</strong>
+            <span class="tech-row">
+              <span class="tech-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/opencv/opencv-original.svg" alt="">OpenCV</span>
+              <span class="tech-chip text-logo">FashionCLIP</span>
+              <span class="tech-chip"><img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/qdrant.svg" alt="">Qdrant</span>
+              <span class="tech-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/raspberrypi/raspberrypi-original.svg" alt="">Raspberry Pi</span>
+            </span>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <section class="band contact-band" id="contact" aria-labelledby="contact-title">
+      <div class="section-copy">
+        <h2 id="contact-title">Links</h2>
+      </div>
+      <div class="contact-grid">
+        <a href="mailto:7fvnjg5@gmail.com">
+          <span>Email</span>
+          <strong>7fvnjg5@gmail.com</strong>
+        </a>
+        <button type="button" data-copy-text="cora1022">
+          <span>Discord</span>
+          <strong>cora1022</strong>
+        </button>
+        <a href="https://github.com/cora1022" rel="noreferrer" target="_blank">
+          <span>GitHub</span>
+          <strong>github.com/cora1022</strong>
+        </a>
+      </div>
     </section>
   </main>
 
-  <dialog class="project-dialog" data-project-dialog>
-    <form method="dialog">
-      <button class="dialog-close" value="close" aria-label="닫기">×</button>
-    </form>
-    <p class="eyebrow" data-dialog-kicker>Project</p>
-    <h2 data-dialog-title>프로젝트</h2>
-    <p data-dialog-description></p>
-    <div class="dialog-links">
-      <a class="button primary" href="#" data-dialog-page>프로젝트 페이지</a>
-      <a class="button secondary" href="#" data-dialog-video>유튜브 영상</a>
+  <dialog class="project-dialog" data-project-dialog aria-labelledby="project-dialog-title">
+    <button class="dialog-close" type="button" data-dialog-close aria-label="닫기">×</button>
+    <img class="dialog-image" data-dialog-image alt="">
+    <div class="dialog-body">
+      <p class="eyebrow" data-dialog-kicker>Project</p>
+      <h2 id="project-dialog-title" data-dialog-title>프로젝트</h2>
+      <p data-dialog-summary></p>
+      <dl class="dialog-meta">
+        <div>
+          <dt>Language</dt>
+          <dd data-dialog-language></dd>
+        </div>
+        <div>
+          <dt>Status</dt>
+          <dd data-dialog-status></dd>
+        </div>
+      </dl>
+      <ul class="dialog-highlights" data-dialog-highlights></ul>
+      <section class="readme-panel" aria-labelledby="readme-title">
+        <h3 id="readme-title">README.md</h3>
+        <div class="readme-content" data-dialog-readme>README를 불러오는 중입니다.</div>
+      </section>
+      <div class="dialog-actions" data-dialog-actions></div>
     </div>
-    <p class="dialog-note">아직 실제 URL이 없으면 버튼은 임시 링크로 남겨두면 됩니다.</p>
   </dialog>
 
   <footer class="site-footer">
     <span>© <span data-year></span> 황영연</span>
-    <a href="https://github.com/cora1022" rel="noreferrer">GitHub</a>
+    <a href="#about">Top</a>
   </footer>
-
-  <script src="assets/js/main.js"></script>
 </body>
 </html>

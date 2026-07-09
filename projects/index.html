@@ -3,67 +3,73 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="황영연의 프로젝트 목록입니다.">
+  <meta name="description" content="황영연의 GitHub 프로젝트 목록입니다.">
   <title>프로젝트 · 황영연</title>
   <link rel="stylesheet" href="../assets/css/styles.css">
+  <script defer src="../assets/js/main.js"></script>
 </head>
 <body>
   <header class="site-header">
-    <a class="brand" href="../index.html">
-      <span class="brand-mark">HY</span>
-      <span>황영연</span>
+    <a class="brand" href="https://github.com/cora1022" rel="noreferrer" target="_blank" aria-label="cora1022 GitHub">
+      <svg class="brand-icon" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M12 .7a11.3 11.3 0 0 0-3.57 22c.57.1.78-.25.78-.55v-2.16c-3.18.69-3.85-1.35-3.85-1.35-.52-1.31-1.27-1.66-1.27-1.66-1.04-.71.08-.7.08-.7 1.15.08 1.75 1.18 1.75 1.18 1.02 1.75 2.68 1.24 3.33.95.1-.74.4-1.24.72-1.52-2.54-.29-5.21-1.27-5.21-5.64 0-1.25.45-2.27 1.18-3.07-.12-.29-.51-1.46.11-3.03 0 0 .96-.31 3.14 1.17a10.86 10.86 0 0 1 5.72 0c2.18-1.48 3.14-1.17 3.14-1.17.62 1.57.23 2.74.11 3.03.74.8 1.18 1.82 1.18 3.07 0 4.38-2.68 5.35-5.23 5.63.41.36.77 1.06.77 2.14v3.17c0 .3.21.66.79.55A11.3 11.3 0 0 0 12 .7Z"/>
+      </svg>
+      <span class="brand-text">
+        <strong>cora1022</strong>
+      </span>
     </a>
     <nav class="nav-links" aria-label="주요 메뉴">
-      <a href="../index.html#about">소개</a>
-      <a href="../index.html#writing">글</a>
-      <a class="active" href="../index.html#projects">프로젝트</a>
-      <a href="../index.html#skills">기술스택</a>
-      <a href="../index.html#contact">연락처</a>
-      <a href="../posts/index.html">Blog</a>
-      <button class="icon-button" type="button" data-theme-toggle aria-label="테마 변경">◐</button>
+      <a href="https://cora1022.github.io/blog/">개발기록</a>
+      <a class="active" href="index.html">Repos</a>
+      <a href="../index.html#stack">기술 스택</a>
+      <a href="../index.html#contact">Contact</a>
+      <a href="https://cora1022.github.io/blog/">글 전체</a>
+      <a href="https://github.com/cora1022" rel="noreferrer" target="_blank">GitHub</a>
+      <button class="icon-button" type="button" data-theme-toggle aria-label="테마 변경">
+        <span aria-hidden="true">◐</span>
+      </button>
     </nav>
   </header>
 
   <main class="page-shell">
     <section class="page-title">
-      <p class="eyebrow">Projects</p>
+      <p class="eyebrow">Repository Gallery</p>
       <h1>프로젝트</h1>
-      <p>프로젝트 페이지나 유튜브 영상이 생기면 이 목록에서 바로 연결합니다.</p>
+      <p>GitHub, Pages demo, YouTube 링크를 프로젝트별로 연결합니다.</p>
     </section>
 
-    <section class="project-grid" aria-label="프로젝트 목록">
-      <article class="project-card">
-        <p class="meta">AI · Vision</p>
-        <h2>패션 유사도</h2>
-        <p>이미지 기반으로 패션 아이템의 유사도를 비교하고 추천하는 프로젝트입니다.</p>
-        <a href="../index.html#projects">메인에서 보기</a>
-      </article>
-      <article class="project-card">
-        <p class="meta">Automation</p>
-        <h2>로봇</h2>
-        <p>로봇 제어와 자동화 실험을 정리할 프로젝트 공간입니다.</p>
-        <a href="../index.html#projects">메인에서 보기</a>
-      </article>
-      <article class="project-card">
-        <p class="meta">Simulation</p>
-        <h2>재활용 시뮬레이션</h2>
-        <p>재활용 흐름이나 환경 데이터를 시뮬레이션하고 시각화하는 프로젝트입니다.</p>
-        <a href="../index.html#projects">메인에서 보기</a>
-      </article>
-      <article class="project-card">
-        <p class="meta">Speech · Backend</p>
-        <h2>동시통역</h2>
-        <p>음성 입력부터 번역 출력까지 이어지는 실시간 처리 파이프라인 프로젝트입니다.</p>
-        <a href="../index.html#projects">메인에서 보기</a>
-      </article>
-    </section>
+    <section class="project-grid" data-project-grid aria-label="프로젝트 목록"></section>
   </main>
+
+  <dialog class="project-dialog" data-project-dialog aria-labelledby="project-dialog-title">
+    <button class="dialog-close" type="button" data-dialog-close aria-label="닫기">×</button>
+    <img class="dialog-image" data-dialog-image alt="">
+    <div class="dialog-body">
+      <p class="eyebrow" data-dialog-kicker>Project</p>
+      <h2 id="project-dialog-title" data-dialog-title>프로젝트</h2>
+      <p data-dialog-summary></p>
+      <dl class="dialog-meta">
+        <div>
+          <dt>Language</dt>
+          <dd data-dialog-language></dd>
+        </div>
+        <div>
+          <dt>Status</dt>
+          <dd data-dialog-status></dd>
+        </div>
+      </dl>
+      <ul class="dialog-highlights" data-dialog-highlights></ul>
+      <section class="readme-panel" aria-labelledby="readme-title">
+        <h3 id="readme-title">README.md</h3>
+        <div class="readme-content" data-dialog-readme>README를 불러오는 중입니다.</div>
+      </section>
+      <div class="dialog-actions" data-dialog-actions></div>
+    </div>
+  </dialog>
 
   <footer class="site-footer">
     <span>© <span data-year></span> 황영연</span>
     <a href="../index.html">Home</a>
   </footer>
-
-  <script src="../assets/js/main.js"></script>
 </body>
 </html>
