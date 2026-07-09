@@ -1,6 +1,6 @@
-# Cora1022 GitHub Pages
+# 황영연 GitHub Pages
 
-Static GitHub Pages hub for blog posts, project front pages, and competition retrospectives.
+Static GitHub Pages introduction site for 황영연, with blog posts, project modals, skills, and contact links.
 
 ## Local Preview
 
@@ -29,8 +29,10 @@ Then enable GitHub Pages from the repository settings if it is not enabled autom
 
 ## Edit Points
 
-- Blog/site name: `Cora1022 Lab` confirmed
+- Site identity: `황영연`
+- Positioning: backend developer in progress
 - Main retrospective: `posts/nypc-next-nation-84th.html`
 - Development replay: `posts/nypc-next-nation-replay.html`
 - Project/front-page links: `projects/index.html`
+- Main page project modal placeholders: fashion similarity, robot, recycling simulation, simultaneous interpretation
 - Public scope: full disclosure for NYPC strategy, experiments, and engineering process
