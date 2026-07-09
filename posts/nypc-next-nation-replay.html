@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="NYPC NEXT NATION 전략 봇 개발 과정을 날짜별로 복기한 리플레이입니다.">
+  <title>NYPC NEXT NATION 개발 리플레이 · Cora1022 Lab</title>
+  <link rel="stylesheet" href="../assets/css/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="../index.html">
+      <span class="brand-mark">C</span>
+      <span>Cora1022 Lab</span>
+    </a>
+    <nav class="nav-links" aria-label="주요 메뉴">
+      <a class="active" href="index.html">Blog</a>
+      <a href="../projects/index.html">Front Pages</a>
+      <a href="../about.html">About</a>
+      <button class="icon-button" type="button" data-theme-toggle aria-label="테마 변경">◐</button>
+    </nav>
+  </header>
+
+  <main class="article-shell">
+    <article class="article">
+      <p class="eyebrow">NYPC · Replay · 2026</p>
+      <h1>NYPC NEXT NATION 개발 리플레이</h1>
+      <p class="article-lead">
+        이 글은 상황별로 어떤 판단을 했고, 어떤 모델을 만들었으며, 어디서 방향이 틀어졌는지
+        시간순으로 복기한 기록이다. 결과보다 과정에 초점을 둔 개발 로그에 가깝다.
+      </p>
+
+      <div class="article-meta">
+        <span>Source: 황영연 리플레이</span>
+        <span>Scope: full disclosure</span>
+        <a href="nypc-next-nation-84th.html">메인 회고</a>
+        <button class="text-button" type="button" data-copy-link>링크 복사</button>
+      </div>
+
+      <section class="timeline">
+        <div class="timeline-item">
+          <p class="meta">6월 29일 · 시작</p>
+          <h2>문제를 이해시키는 일부터 시작했다</h2>
+          <p>
+            6월 29일, 처음 문제를 보았을 때는 이미 다른 조원들이 한참 코드를 짜고 있었다. 문제와
+            NYPC 공식 룰 설명 영상을 본 뒤, Codex가 게임을 이해할 수 있도록 게임 룰북과 로그 분석
+            방법을 적은 마크다운 파일을 만들었다. 그때부터 하네스 엔지니어링을 하며 모델 제작을
+            시작했다.
+          </p>
+          <p>
+            그 결과 하루 안에 넥슨 제출 기준 8승 모델을 만들었다. 초반에는 AI를 최대한 빠르게 제작하고,
+            이후 룰과 디버깅을 생각하며 속도에 중점을 두었다. 이 과정에서 코드와 입출력 방식을 보며
+            게임이 실제로 어떻게 돌아가는지 공부했다.
+          </p>
+        </div>
+
+        <div class="timeline-item">
+          <p class="meta">6월 29일 21시까지</p>
+          <h2>조원 모델의 경제 로직을 붙이려다 구조 차이를 발견했다</h2>
+          <p>
+            이후 조원들과 모여 앞으로의 계획과 진행 방법을 논의했다. 7월 1일 10시 제출이 예정되어
+            있었기 때문에, 팀원의 로그를 보며 아레나의 흐름을 보기 시작했다.
+          </p>
+          <p>
+            당시 조원이 제출했던 모델의 경제 로직이 좋아 보여, Codex에게 두 코드의 경제 로직을 합쳐
+            달라고 요구했다. 하지만 그때 문제를 발견했다. 단순히 내 경제 로직을 빼고 조원의 경제
+            로직을 붙이는 식으로는 해결되지 않았다. 두 코드의 컨트롤러는 전혀 다른 방식으로 흘러갔고,
+            리팩토링만으로 해결하기 어려울 만큼 시뮬레이션 방식도 달랐다.
+          </p>
+          <p>
+            결국 기존 모델에 해당 경제 로직을 억지로 구현하는 방식으로 이어갔다. 결과는 56등이었다.
+          </p>
+        </div>
+
+        <div class="timeline-item">
+          <p class="meta">7월 1일 10시 이후</p>
+          <h2>내부 아레나와 전략 다양화</h2>
+          <p>
+            다른 조원의 중간평가 로그를 확인하며 다른 방법의 모델이 없을지 고민했다. 초반에 거점을
+            먹지 않고 공격력에 올인하여 침략하는 전략, 정상적으로 운영하다가 외곽을 공격하는 전략
+            등을 만들기 시작했다.
+          </p>
+          <p>
+            연습 게임 때 버섯 게임에 참여하며 내부적으로 아레나를 돌려 수정하는 방법을 떠올렸기 때문에,
+            내부 모델의 다양성을 늘리고 싶었다. 이후 괜찮았던 외곽 공격 전략과 기존 모델을 합치는
+            방식으로 중간평가에 제출했고, 27등이 나왔다.
+          </p>
+        </div>
+
+        <div class="timeline-item">
+          <p class="meta">7월 2일 10시 이후</p>
+          <h2>객체지향 컨트롤러라는 방향</h2>
+          <p>
+            중간평가 로그를 분석하고 업그레이드하는 과정에서 느낀 점이 있었다. 처음에는 AI로 코드를
+            작성한 뒤 로그를 통해 단점을 보완하면 어느 정도 능력 있는 모델을 만들 수 있다. 하지만 이
+            방식이 반복되면 유지보수가 되지 않고, 오히려 업그레이드에도 악영향을 줄 수 있었다.
+          </p>
+          <p>
+            그래서 객체지향 컨트롤러라는 개념을 떠올렸다. 로직을 개념적으로 나누고 지휘 체계를 구축해,
+            이후 업그레이드할 때 효율적으로 유지보수할 수 있도록 새 하네스와 함께 다시 개발했다.
+          </p>
+          <p>
+            첫 결과는 58등이었다. 로그를 분석해 단점을 보완한 뒤 제출했을 때는 19등까지 개선할 수
+            있었다. 이후 Codex를 통해 24시간 자동으로 내부 아레나를 진행시키고, 로그 분석으로 가설을
+            세운 뒤, 가설별 모델을 여러 개 만들고 다시 아레나를 돌려 승점이 오른 모델만 남기는 방식으로
+            반복 업그레이드를 시작했다.
+          </p>
+        </div>
+
+        <div class="timeline-item">
+          <p class="meta">7월 4일 21시까지</p>
+          <h2>내부 아레나 과적합이 터졌다</h2>
+          <p>
+            팀 내 모델들이 문제가 터지기 시작했다. 내부적으로 돌리던 아레나에 과의존해 패치를 이어간
+            결과, 예상과 다르게 중간평가에서는 반대의 결과가 나오기 시작했다.
+          </p>
+          <p>
+            분명 두 자리수 순위 유지가 어렵지 않았던 모델들도 세 자리수까지 밀려났다. 내 모델 또한
+            Codex가 24시간 자율 튜닝했지만, 처음보다 낮은 59등까지 밀려 고민에 빠졌다.
+          </p>
+        </div>
+
+        <div class="timeline-item">
+          <p class="meta">7월 4일 21시 이후</p>
+          <h2>룰북으로 돌아가 구조적 결함을 찾았다</h2>
+          <p>
+            게임 룰북을 다시 보기 시작했다. 객관적으로 우리 모델들이 어떤 문제를 가지고 있는지 찾기
+            위해서였다. 수 시간 동안 원인을 분석한 결과, 문제가 분명했다.
+          </p>
+          <p>
+            조원들의 모델들을 디버깅해보니 상대 골드 추적 시스템이 빠져 있는 경우가 있었고, 상대의
+            실질 전투 인원을 탐색하는 시스템도 취약했다. 더 결정적으로는 상대가 몰려올 때 단순 조건으로
+            본진에 집결하거나, 상대가 거점을 침략한 뒤에야 방어에 참여하는 구조적 결함이 많았다.
+          </p>
+          <p>
+            이때 서버 result에서 상대 병력이 이동하는 경로를 보고, 조기에 어떤 경로로 오고 있는지 예측할
+            수 있지 않을까 고민했다. 다익스트라나 A* 같은 길찾기 알고리즘을 거점에 적용해 경로가
+            일치했을 때 조기 감지를 할 수 있지 않을까 생각했다.
+          </p>
+        </div>
+
+        <div class="timeline-item">
+          <p class="meta">7월 6일 21시까지</p>
+          <h2>새 모델은 낮은 순위로 시작했고, 관측의 빈약함이 남았다</h2>
+          <p>
+            다음 제출은 바로 전에 만들었던 컨트롤러 모델이 아니라 새롭게 구축한 모델이었다. 하지만
+            급하게 제출되었을 때는 380등이라는 낮은 순위가 나왔다. 공격 시스템과 추가 방어 시스템이
+            충분히 제작되지 않았기 때문이라고 생각한다.
+          </p>
+          <p>
+            이 시점에는 조원들의 모델들도 내부 아레나 패치로 상황이 더 악화되었다. 나는 조원들과 해법을
+            논의하며 경로 예측 시스템이 제대로 적용되지 않고 있고, 관측 시스템 또한 빈약하다는 점을
+            짚었다.
+          </p>
+        </div>
+      </section>
+
+      <section class="note-box">
+        <h2>이 리플레이에서 남은 핵심</h2>
+        <p>
+          빠른 AI 개발은 출발점을 만들어주지만, 장기전에서는 컨트롤러 구조, 관측 시스템, 상대 자원 추적,
+          테스트셋 다양성이 더 중요했다. 특히 내부 아레나에 맞춘 튜닝은 실제 아레나에서 쉽게 역효과가
+          날 수 있었다.
+        </p>
+      </section>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <span>© <span data-year></span> Cora1022</span>
+    <a href="index.html">Blog</a>
+  </footer>
+
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

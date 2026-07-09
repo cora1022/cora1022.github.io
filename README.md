@@ -1,27 +1,30 @@
-# cora1022.github.io
+# Cora1022 GitHub Pages
 
-GitHub Pages 배포를 위한 React/Vite 정적 빌드 결과물입니다.
+Static GitHub Pages hub for blog posts, project front pages, and competition retrospectives.
 
-## 프로젝트 목적
+## Local Preview
 
-간단한 글 목록을 작성하고 좋아요/삭제/상세 모달을 테스트하는 React 미니 게시판 데모를 GitHub Pages에 올리기 위한 저장소입니다. 현재 저장소에는 원본 React 소스가 아니라 빌드된 `index.html`과 `assets/` 번들이 포함되어 있습니다.
+Open `index.html` directly in a browser.
 
-## 폴더 구조
+## Publish
 
-```text
-.
-├── assets/
-│   ├── index-*.css
-│   └── index-*.js
-├── index.html
-├── vite.svg
-└── README.md
+Create or connect this folder to the GitHub repository:
+
+```powershell
+git init
+git add .
+git commit -m "Create GitHub Pages hub"
+git branch -M main
+git remote add origin https://github.com/cora1022/cora1022.github.io.git
+git push -u origin main
 ```
 
-## 실행 방법
+Then enable GitHub Pages from the repository settings if it is not enabled automatically.
 
-```bash
-python -m http.server 8000
-```
+## Edit Points
 
-브라우저에서 `http://localhost:8000`을 열면 빌드된 앱을 확인할 수 있습니다.
+- Blog/site name: `Cora1022 Lab` confirmed
+- Main retrospective: `posts/nypc-next-nation-84th.html`
+- Development replay: `posts/nypc-next-nation-replay.html`
+- Project/front-page links: `projects/index.html`
+- Public scope: full disclosure for NYPC strategy, experiments, and engineering process

@@ -1,14 +1,101 @@
 <!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React</title>
-    <script type="module" crossorigin src="/assets/index-ElMLsA5b.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-jkvG4k1D.css">
-  </head>
-  <body>
-    <div id="root"></div>
-  </body>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Cora1022의 개발 블로그와 프로젝트 프론트 페이지 허브입니다.">
+  <title>Cora1022 Lab</title>
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="Cora1022 Lab 홈">
+      <span class="brand-mark">C</span>
+      <span>Cora1022 Lab</span>
+    </a>
+    <nav class="nav-links" aria-label="주요 메뉴">
+      <a href="posts/index.html">Blog</a>
+      <a href="projects/index.html">Front Pages</a>
+      <a href="about.html">About</a>
+      <button class="icon-button" type="button" data-theme-toggle aria-label="테마 변경">◐</button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">Blog · Projects · Experiments</p>
+        <h1>실험을 기록하고, 다음 화면으로 연결하는 개발 허브.</h1>
+        <p class="hero-lead">
+          대회 회고, 전략 모델링, 프론트엔드 페이지를 한 곳에서 정리합니다.
+          실패한 실험도 다음 선택지를 만들 수 있도록 남겨둡니다.
+        </p>
+        <div class="hero-actions">
+          <a class="button primary" href="posts/nypc-next-nation-84th.html">NYPC 회고 읽기</a>
+          <a class="button secondary" href="projects/index.html">프론트 페이지 보기</a>
+        </div>
+      </div>
+      <div class="hero-panel" aria-label="프로젝트 연결 지도">
+        <div class="map-card card-a">
+          <span>NYPC</span>
+          <strong>Controller Lab</strong>
+        </div>
+        <div class="map-card card-b">
+          <span>Blog</span>
+          <strong>Retrospective</strong>
+        </div>
+        <div class="map-card card-c">
+          <span>Front</span>
+          <strong>Pages Hub</strong>
+        </div>
+        <div class="map-line line-a"></div>
+        <div class="map-line line-b"></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-heading">
+        <p class="eyebrow">Latest</p>
+        <h2>최근 기록</h2>
+      </div>
+      <div class="feature-grid">
+        <article class="feature-card">
+          <p class="meta">NYPC · Strategy Bot · 2026</p>
+          <h3>NYPC NEXT NATION 예선 탈락기: 84등까지 간 전략 봇 개발 기록</h3>
+          <p>
+            로그 분석, 하네스 구축, 모델 튜닝, 내부 테스트와 실제 아레나의 차이를 정리한 회고입니다.
+          </p>
+          <a href="posts/nypc-next-nation-84th.html">읽기</a>
+        </article>
+        <article class="feature-card">
+          <p class="meta">Replay · Timeline</p>
+          <h3>NYPC 개발 리플레이</h3>
+          <p>
+            6월 29일부터 7월 6일까지 어떤 판단으로 모델을 바꿨는지 날짜별로 복기한 기록입니다.
+          </p>
+          <a href="posts/nypc-next-nation-replay.html">읽기</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="section split-section">
+      <div>
+        <p class="eyebrow">Questions</p>
+        <h2>다음에 정하면 좋은 것</h2>
+      </div>
+      <div class="question-list">
+        <p><strong>블로그 이름:</strong> `Cora1022 Lab`으로 확정했습니다.</p>
+        <p><strong>GitHub 계정:</strong> `cora1022` 기준으로 링크를 잡았습니다.</p>
+        <p><strong>공개 범위:</strong> NYPC 기록은 전략, 실험, 코드 흐름까지 공개하는 방향으로 정리합니다.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <span>© <span data-year></span> Cora1022</span>
+    <a href="https://github.com/cora1022" rel="noreferrer">GitHub</a>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
 </html>
