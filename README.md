@@ -8,7 +8,13 @@ Open `index.html` directly in a browser.
 
 ## Publish
 
-Create or connect this folder to the GitHub repository:
+This site is published from:
+
+- Repository: `https://github.com/cora1022/cora1022.github.io`
+- Pages URL: `https://cora1022.github.io/`
+- Deployment: GitHub Actions workflow at `.github/workflows/pages.yml`
+
+If this folder is recreated somewhere else, connect it with:
 
 ```powershell
 git init
