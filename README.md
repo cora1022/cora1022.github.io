@@ -1,6 +1,6 @@
 # 황영연 GitHub Pages
 
-Static GitHub Pages portfolio hub for 황영연, with a GitHub repository gallery, project modals, skills, contact links, and an outbound blog entry point.
+Static GitHub Pages portfolio hub for 황영연, with a GitHub repository gallery, project modals, skills, contact links, and an outbound development-log entry point.
 
 ## Local Preview
 
@@ -10,7 +10,7 @@ Main local entry points:
 
 - `index.html`
 - `projects/index.html`
-- Blog repository target: `https://cora1022.github.io/blog/`
+- Development log repository target: `https://cora1022.github.io/blog/`
 
 ## Publish
 
@@ -38,8 +38,8 @@ Then enable GitHub Pages from the repository settings if it is not enabled autom
 - Site identity: `황영연`
 - Positioning: backend developer in progress
 - Hero background: animated CSS day/night scene
-- Blog URL: `https://cora1022.github.io/blog/`
-- Blog source folder: `../blog`
+- Development log URL: `https://cora1022.github.io/blog/`
+- Development log source folder: `../blog`
 - Project modal data: `assets/js/main.js`
 - Project/front-page rendering: `index.html` and `projects/index.html`
 - YouTube links: add URLs to each project's `youtube` field in `assets/js/main.js`

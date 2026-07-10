@@ -181,7 +181,7 @@
 
     if (!posts.length) {
       var empty = createBlogRow({
-        date: "Blog",
+        date: "Log",
         title: "아직 정리된 개발기록이 없습니다.",
         href: "https://cora1022.github.io/blog/"
       });
@@ -202,7 +202,7 @@
     }
 
     var fallbackPosts = [{
-      date: "Blog",
+      date: "Log",
       title: "개발기록 바로가기",
       href: "https://cora1022.github.io/blog/"
     }];
