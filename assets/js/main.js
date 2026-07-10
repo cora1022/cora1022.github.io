@@ -201,20 +201,32 @@
       return;
     }
 
-    var script = document.createElement("script");
-    script.src = "https://cora1022.github.io/blog/assets/js/posts.js";
-    script.async = true;
-    script.onload = function () {
-      renderBlogPosts(Array.isArray(window.blogPosts) ? window.blogPosts : []);
-    };
-    script.onerror = function () {
-      renderBlogPosts([{
-        date: "Blog",
-        title: "개발기록 바로가기",
-        href: "https://cora1022.github.io/blog/"
-      }]);
-    };
-    document.head.appendChild(script);
+    var fallbackPosts = [{
+      date: "Blog",
+      title: "개발기록 바로가기",
+      href: "https://cora1022.github.io/blog/"
+    }];
+
+    if (!window.fetch) {
+      renderBlogPosts(fallbackPosts);
+      return;
+    }
+
+    fetch("https://cora1022.github.io/blog/assets/posts.json?ver=20260710", {
+      cache: "no-store"
+    })
+      .then(function (response) {
+        if (!response.ok) {
+          throw new Error("Blog post list request failed");
+        }
+        return response.json();
+      })
+      .then(function (posts) {
+        renderBlogPosts(Array.isArray(posts) ? posts : fallbackPosts);
+      })
+      .catch(function () {
+        renderBlogPosts(fallbackPosts);
+      });
   }
 
   loadBlogPosts();
