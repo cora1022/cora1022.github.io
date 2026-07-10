@@ -944,6 +944,10 @@ main {
   opacity: 1;
 }
 
+.blog-title-list a.is-muted {
+  color: var(--muted);
+}
+
 .projects-band {
   grid-template-columns: 1fr;
 }

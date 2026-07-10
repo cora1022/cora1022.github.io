@@ -143,6 +143,82 @@
     node.textContent = new Date().getFullYear();
   });
 
+  function formatPostDate(value) {
+    if (!value) {
+      return "Note";
+    }
+
+    return value.replace(/-/g, ".");
+  }
+
+  function resolveBlogUrl(href) {
+    return new URL(href || "", "https://cora1022.github.io/blog/").href;
+  }
+
+  function createBlogRow(post) {
+    var link = document.createElement("a");
+    link.href = resolveBlogUrl(post.href);
+
+    var time = document.createElement("time");
+    time.dateTime = post.date || "";
+    time.textContent = formatPostDate(post.date);
+
+    var title = document.createElement("span");
+    title.textContent = post.title || "제목 없는 글";
+
+    link.appendChild(time);
+    link.appendChild(title);
+    return link;
+  }
+
+  function renderBlogPosts(posts) {
+    var list = document.querySelector("[data-blog-list]");
+    if (!list) {
+      return;
+    }
+
+    list.innerHTML = "";
+
+    if (!posts.length) {
+      var empty = createBlogRow({
+        date: "Blog",
+        title: "아직 정리된 개발기록이 없습니다.",
+        href: "https://cora1022.github.io/blog/"
+      });
+      empty.classList.add("is-muted");
+      list.appendChild(empty);
+      return;
+    }
+
+    posts.slice(0, 5).forEach(function (post) {
+      list.appendChild(createBlogRow(post));
+    });
+  }
+
+  function loadBlogPosts() {
+    var list = document.querySelector("[data-blog-list]");
+    if (!list) {
+      return;
+    }
+
+    var script = document.createElement("script");
+    script.src = "https://cora1022.github.io/blog/assets/js/posts.js";
+    script.async = true;
+    script.onload = function () {
+      renderBlogPosts(Array.isArray(window.blogPosts) ? window.blogPosts : []);
+    };
+    script.onerror = function () {
+      renderBlogPosts([{
+        date: "Blog",
+        title: "개발기록 바로가기",
+        href: "https://cora1022.github.io/blog/"
+      }]);
+    };
+    document.head.appendChild(script);
+  }
+
+  loadBlogPosts();
+
   document.querySelectorAll("[data-theme-toggle]").forEach(function (button) {
     button.addEventListener("click", function () {
       var current = root.dataset.theme || "light";
