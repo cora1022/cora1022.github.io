@@ -2,8 +2,110 @@
   var root = document.documentElement;
   var savedTheme = localStorage.getItem("theme");
   var themeAnimationTimer = 0;
+  var analyticsId = "G-PHEXQ6C1M0";
+  var consentKey = "cora1022-analytics-consent";
+
+  window.dataLayer = window.dataLayer || [];
+  window.gtag = window.gtag || function (...args) {
+    window.dataLayer.push(args);
+  };
+  window.gtag("consent", "default", {
+    analytics_storage: "denied",
+    ad_storage: "denied",
+    ad_user_data: "denied",
+    ad_personalization: "denied",
+    wait_for_update: 500
+  });
+
+  function loadAnalytics() {
+    if (document.querySelector('script[data-google-tag="' + analyticsId + '"]')) {
+      return;
+    }
+
+    window.gtag("consent", "update", { analytics_storage: "granted" });
+    window.gtag("js", new Date());
+    window.gtag("config", analyticsId, { anonymize_ip: true });
+
+    var script = document.createElement("script");
+    script.async = true;
+    script.dataset.googleTag = analyticsId;
+    script.src = "https://www.googletagmanager.com/gtag/js?id=" + encodeURIComponent(analyticsId);
+    document.head.appendChild(script);
+  }
+
+  function saveConsent(value) {
+    localStorage.setItem(consentKey, value);
+    document.querySelectorAll("[data-consent-banner]").forEach(function (banner) {
+      banner.remove();
+    });
+    if (value === "granted") {
+      loadAnalytics();
+    }
+  }
+
+  function showConsentBanner() {
+    if (document.querySelector("[data-consent-banner]")) {
+      return;
+    }
+
+    var banner = document.createElement("aside");
+    banner.className = "consent-banner";
+    banner.dataset.consentBanner = "";
+    banner.setAttribute("aria-label", "방문 통계 설정");
+
+    var copy = document.createElement("p");
+    copy.innerHTML = '서비스 개선을 위해 익명 방문 통계를 사용합니다. <a href="/privacy.html">개인정보 처리방침</a>';
+
+    var actions = document.createElement("div");
+    var reject = document.createElement("button");
+    reject.type = "button";
+    reject.className = "button";
+    reject.textContent = "거부";
+    reject.addEventListener("click", function () { saveConsent("denied"); });
+
+    var accept = document.createElement("button");
+    accept.type = "button";
+    accept.className = "button primary";
+    accept.textContent = "동의";
+    accept.addEventListener("click", function () { saveConsent("granted"); });
+
+    actions.appendChild(reject);
+    actions.appendChild(accept);
+    banner.appendChild(copy);
+    banner.appendChild(actions);
+    document.body.appendChild(banner);
+  }
+
+  var savedConsent = localStorage.getItem(consentKey);
+  if (savedConsent === "granted") {
+    loadAnalytics();
+  } else if (savedConsent !== "denied") {
+    showConsentBanner();
+  }
 
   var projects = [
+    {
+      id: "image-converter",
+      kicker: "Web Tool · Astro",
+      title: "이미지변환소",
+      repo: "image-conversion",
+      language: "TypeScript",
+      status: "Live service",
+      tech: ["Astro", "TypeScript", "Canvas", "Netlify"],
+      summary: "PNG, JPG, WebP 변환과 이미지 압축, 크기 변경, EXIF 제거 기능을 제공하는 웹 도구입니다.",
+      highlights: [
+        "이미지 파일을 외부 저장소에 보관하지 않고 작업합니다.",
+        "형식 변환, 압축, 리사이즈 도구를 한곳에서 제공합니다.",
+        "정적 빌드와 Netlify 자동 배포로 운영합니다."
+      ],
+      github: "https://github.com/cora1022/image-conversion",
+      primary: "https://image.cora1022.com/",
+      page: "https://image.cora1022.com/",
+      youtube: "",
+      image: "https://image.cora1022.com/og.png",
+      action: { type: "page", label: "Page", url: "https://image.cora1022.com/" },
+      featured: true
+    },
     {
       id: "fashion-search",
       kicker: "AI Vision · Python",
@@ -386,10 +488,10 @@
     card.className = "project-card";
     var mainLink = document.createElement("a");
     mainLink.className = "project-card-main";
-    mainLink.href = project.github;
+    mainLink.href = project.primary || project.github;
     mainLink.target = "_blank";
     mainLink.rel = "noreferrer";
-    mainLink.setAttribute("aria-label", project.title + " GitHub 저장소 열기");
+    mainLink.setAttribute("aria-label", project.primary ? project.title + " 열기" : project.title + " GitHub 저장소 열기");
 
     var image = null;
     if (project.preferPreview) {

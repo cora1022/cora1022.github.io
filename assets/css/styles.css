@@ -1359,6 +1359,46 @@ main {
   font-size: 14px;
 }
 
+.site-footer nav,
+.consent-banner div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.consent-banner {
+  position: fixed;
+  z-index: 1000;
+  right: 18px;
+  bottom: 18px;
+  left: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  width: min(760px, calc(100% - 36px));
+  padding: 16px;
+  margin-inline: auto;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  background: var(--surface-elevated);
+  box-shadow: var(--shadow);
+}
+
+.consent-banner p {
+  margin: 0;
+  color: var(--text-body);
+}
+
+.consent-banner .button {
+  min-width: 76px;
+}
+
+.policy-meta {
+  color: var(--subtle);
+  font-size: 14px;
+}
+
 .page-shell,
 .article-shell {
   width: min(980px, calc(100% - 44px));
@@ -1721,6 +1761,17 @@ main {
 
   .post-row {
     grid-template-columns: 1fr;
+  }
+
+  .site-footer,
+  .consent-banner {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .consent-banner div {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
   }
 
 }
