@@ -121,9 +121,16 @@
       ],
       github: "https://github.com/cora1022/robot",
       page: "",
-      youtube: "",
+      youtube: "https://youtu.be/QIJOv5Q-LHc",
       image: "assets/img/robot-project-thumbnail.png",
-      action: { type: "youtube", label: "YouTube", url: "https://www.youtube.com/" },
+      videos: [
+        { title: "충돌 직전까지 앞으로 이동", url: "https://youtu.be/QIJOv5Q-LHc" },
+        { title: "사물을 인식하고 뒤로 이동", url: "https://youtu.be/0o1b3L9IwOY" },
+        { title: "로봇 노래 기능", url: "https://youtu.be/ix_nwpkvWfA" },
+        { title: "앞으로·뒤로 반복 이동", url: "https://youtube.com/shorts/KLmq6Mq9xEY?feature=share" },
+        { title: "이동 후 이미지 판단", url: "https://youtube.com/shorts/O0WwkEZf5KQ?feature=share" }
+      ],
+      action: { type: "youtube", label: "YouTube", gallery: true },
       featured: true
     },
     {
@@ -435,7 +442,111 @@
     return icon;
   }
 
-  function createProjectAction(action) {
+  var videoDialogLastFocus = null;
+
+  function getYouTubeVideoId(url) {
+    var match = String(url || "").match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|shorts\/))([^?&/]+)/);
+    return match ? match[1] : "";
+  }
+
+  function ensureVideoGalleryDialog() {
+    var existing = document.querySelector("[data-video-gallery-dialog]");
+    if (existing) {
+      return existing;
+    }
+
+    var dialog = document.createElement("dialog");
+    dialog.className = "video-gallery-dialog";
+    dialog.dataset.videoGalleryDialog = "";
+    dialog.setAttribute("aria-labelledby", "video-gallery-title");
+
+    var header = document.createElement("div");
+    header.className = "video-gallery-header";
+    var heading = document.createElement("h2");
+    heading.id = "video-gallery-title";
+    var close = document.createElement("button");
+    close.type = "button";
+    close.className = "video-gallery-close";
+    close.setAttribute("aria-label", "영상 목록 닫기");
+    close.textContent = "×";
+
+    var list = document.createElement("div");
+    list.className = "video-gallery-grid";
+    list.dataset.videoGalleryList = "";
+
+    header.appendChild(heading);
+    header.appendChild(close);
+    dialog.appendChild(header);
+    dialog.appendChild(list);
+    document.body.appendChild(dialog);
+
+    close.addEventListener("click", function () {
+      dialog.close();
+    });
+    dialog.addEventListener("click", function (event) {
+      if (event.target === dialog) {
+        dialog.close();
+      }
+    });
+    dialog.addEventListener("close", function () {
+      if (videoDialogLastFocus) {
+        videoDialogLastFocus.focus();
+      }
+      videoDialogLastFocus = null;
+    });
+
+    return dialog;
+  }
+
+  function openVideoGallery(project) {
+    var dialog = ensureVideoGalleryDialog();
+    var heading = dialog.querySelector("#video-gallery-title");
+    var list = dialog.querySelector("[data-video-gallery-list]");
+    heading.textContent = project.title + " 주요 영상";
+    list.innerHTML = "";
+
+    (project.videos || []).forEach(function (video) {
+      var link = document.createElement("a");
+      link.className = "video-gallery-item";
+      link.href = video.url;
+      link.target = "_blank";
+      link.rel = "noreferrer";
+
+      var image = document.createElement("img");
+      var videoId = getYouTubeVideoId(video.url);
+      image.src = "https://i.ytimg.com/vi/" + videoId + "/hqdefault.jpg";
+      image.alt = "";
+      image.loading = "lazy";
+
+      var copy = document.createElement("span");
+      copy.className = "video-gallery-copy";
+      copy.appendChild(createTextElement("strong", "", video.title));
+      copy.appendChild(createTextElement("span", "", video.url.indexOf("/shorts/") >= 0 ? "YouTube Shorts ↗" : "YouTube 영상 ↗"));
+
+      link.appendChild(image);
+      link.appendChild(copy);
+      list.appendChild(link);
+    });
+
+    videoDialogLastFocus = document.activeElement;
+    dialog.showModal();
+  }
+
+  function createProjectAction(action, project) {
+    if (action.gallery && project.videos && project.videos.length) {
+      var button = document.createElement("button");
+      button.type = "button";
+      button.setAttribute("aria-label", project.title + " 주요 영상 보기");
+      button.className = "project-action project-action-" + action.type;
+      button.title = action.label;
+      button.appendChild(createProjectActionIcon(action.type));
+      button.appendChild(createTextElement("span", "", action.label));
+      button.addEventListener("click", function () {
+        openVideoGallery(project);
+      });
+      return button;
+    }
+
     if (!action.url) {
       return null;
     }
@@ -504,12 +615,17 @@
     mainLink.appendChild(body);
     card.appendChild(mainLink);
 
-    if (project.action) {
-      var actionLink = createProjectAction(project.action);
+    var projectActions = project.actions || (project.action ? [project.action] : []);
+    if (projectActions.length) {
       var actions = document.createElement("span");
       actions.className = "project-card-actions";
-      if (actionLink) {
-        actions.appendChild(actionLink);
+      projectActions.forEach(function (action) {
+        var actionLink = createProjectAction(action, project);
+        if (actionLink) {
+          actions.appendChild(actionLink);
+        }
+      });
+      if (actions.children.length) {
         card.appendChild(actions);
       }
     }
