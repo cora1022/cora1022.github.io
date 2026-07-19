@@ -810,8 +810,12 @@ main {
 }
 
 .stack-band {
-  background: var(--surface);
+  background: var(--bg);
   transition: background-color 520ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+:root[data-theme="dark"] .stack-band {
+  background: var(--surface);
 }
 
 .section-copy {
