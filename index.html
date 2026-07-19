@@ -19,7 +19,7 @@
     }());
   </script>
   <link rel="stylesheet" href="assets/css/styles.css">
-  <script defer src="assets/js/main.js?v=20260710-devlog-scroll"></script>
+  <script defer src="assets/js/main.js?v=20260719-blog-domain"></script>
 </head>
 <body>
   <header class="site-header">
@@ -34,6 +34,7 @@
     <nav class="nav-links" aria-label="주요 메뉴">
       <a href="#writing">개발기록</a>
       <a href="#projects">레포지토리</a>
+      <a href="#pages">페이지</a>
       <a href="#stack">기술 스택</a>
       <a href="#contact">연락처</a>
       <button class="icon-button" type="button" data-theme-toggle aria-label="테마 변경">
@@ -91,7 +92,7 @@
         <p>별도 저장소에서 관리하는 개발 기록입니다.</p>
       </div>
       <div class="blog-title-list" data-blog-list aria-label="개발기록 글 목록">
-        <a class="is-muted" href="https://cora1022.github.io/blog/">
+        <a class="is-muted" href="https://cora1022.com/blog/">
           <time datetime="2026">Log</time>
           <span>개발기록을 불러오는 중입니다.</span>
         </a>
@@ -105,6 +106,34 @@
         <p>GitHub, Pages demo, YouTube 링크를 프로젝트별로 연결합니다.</p>
       </div>
       <div class="project-grid" data-project-grid aria-live="polite"></div>
+    </section>
+
+    <section class="band pages-band" id="pages" aria-labelledby="pages-title">
+      <div class="section-copy">
+        <p class="eyebrow">Live Pages</p>
+        <h2 id="pages-title">페이지</h2>
+        <p>직접 사용하거나 둘러볼 수 있는 웹페이지를 모았습니다.</p>
+      </div>
+      <div class="page-grid">
+        <a class="page-card page-card-image" href="https://image.cora1022.com/" target="_blank" rel="noreferrer">
+          <span class="page-card-type">Web Tool</span>
+          <strong>이미지변환소</strong>
+          <span class="page-card-description">이미지 형식 변환, 압축, 크기 변경 도구</span>
+          <span class="page-card-link">image.cora1022.com <span aria-hidden="true">↗</span></span>
+        </a>
+        <a class="page-card page-card-blog" href="https://cora1022.com/blog/" target="_blank" rel="noreferrer">
+          <span class="page-card-type">Development Log</span>
+          <strong>개발 블로그</strong>
+          <span class="page-card-description">프로젝트 과정과 개발 기록을 정리한 공간</span>
+          <span class="page-card-link">cora1022.com/blog <span aria-hidden="true">↗</span></span>
+        </a>
+        <a class="page-card page-card-simulation" href="https://cora1022.com/Urban-Waste-Statistics-Simulation/" target="_blank" rel="noreferrer">
+          <span class="page-card-type">Simulation</span>
+          <strong>도시 폐기물 시뮬레이션</strong>
+          <span class="page-card-description">조건을 조절해 도시 폐기물 데이터를 비교하는 도구</span>
+          <span class="page-card-link">시뮬레이션 열기 <span aria-hidden="true">↗</span></span>
+        </a>
+      </div>
     </section>
 
     <section class="band stack-band" id="stack" aria-labelledby="stack-title">

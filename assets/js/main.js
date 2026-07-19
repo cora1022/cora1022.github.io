@@ -85,28 +85,6 @@
 
   var projects = [
     {
-      id: "image-converter",
-      kicker: "Web Tool · Astro",
-      title: "이미지변환소",
-      repo: "image-conversion",
-      language: "TypeScript",
-      status: "Live service",
-      tech: ["Astro", "TypeScript", "Canvas", "Netlify"],
-      summary: "PNG, JPG, WebP 변환과 이미지 압축, 크기 변경, EXIF 제거 기능을 제공하는 웹 도구입니다.",
-      highlights: [
-        "이미지 파일을 외부 저장소에 보관하지 않고 작업합니다.",
-        "형식 변환, 압축, 리사이즈 도구를 한곳에서 제공합니다.",
-        "정적 빌드와 Netlify 자동 배포로 운영합니다."
-      ],
-      github: "https://github.com/cora1022/image-conversion",
-      primary: "https://image.cora1022.com/",
-      page: "https://image.cora1022.com/",
-      youtube: "",
-      image: "https://image.cora1022.com/og.png",
-      action: { type: "page", label: "Page", url: "https://image.cora1022.com/" },
-      featured: true
-    },
-    {
       id: "fashion-search",
       kicker: "AI Vision · Python",
       title: "OpenCV 기반 패션 이미지 유사도 검색",
@@ -163,10 +141,10 @@
         "알고리즘 수업이나 프로토타입 입력 데이터로 활용하기 좋은 구조입니다."
       ],
       github: "https://github.com/cora1022/Urban-Waste-Statistics-Simulation",
-      page: "https://cora1022.github.io/Urban-Waste-Statistics-Simulation/",
+      page: "https://cora1022.com/Urban-Waste-Statistics-Simulation/",
       youtube: "",
       image: "assets/img/urban-simulation-thumbnail.png",
-      action: { type: "page", label: "Page", url: "https://cora1022.github.io/Urban-Waste-Statistics-Simulation/" },
+      action: { type: "page", label: "Page", url: "https://cora1022.com/Urban-Waste-Statistics-Simulation/" },
       featured: true
     },
     {
@@ -254,7 +232,7 @@
   }
 
   function resolveBlogUrl(href) {
-    return new URL(href || "", "https://cora1022.github.io/blog/").href;
+    return new URL(href || "", "https://cora1022.com/blog/").href;
   }
 
   function createBlogRow(post) {
@@ -285,7 +263,7 @@
       var empty = createBlogRow({
         date: "Log",
         title: "아직 정리된 개발기록이 없습니다.",
-        href: "https://cora1022.github.io/blog/"
+        href: "https://cora1022.com/blog/"
       });
       empty.classList.add("is-muted");
       list.appendChild(empty);
@@ -306,7 +284,7 @@
     var fallbackPosts = [{
       date: "Log",
       title: "개발기록 바로가기",
-      href: "https://cora1022.github.io/blog/"
+      href: "https://cora1022.com/blog/"
     }];
 
     if (!window.fetch) {
@@ -314,7 +292,7 @@
       return;
     }
 
-    fetch("https://cora1022.github.io/blog/assets/posts.json?ver=20260710", {
+    fetch("/blog/assets/posts.json?ver=20260719", {
       cache: "no-store"
     })
       .then(function (response) {

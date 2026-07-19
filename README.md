@@ -10,7 +10,7 @@ Main local entry points:
 
 - `index.html`
 - `projects/index.html`
-- Development log repository target: `https://cora1022.github.io/blog/`
+- Development log repository target: `https://cora1022.com/blog/`
 
 ## Publish
 
@@ -38,7 +38,7 @@ Then enable GitHub Pages from the repository settings if it is not enabled autom
 - Site identity: `황영연`
 - Positioning: backend developer in progress
 - Hero background: animated CSS day/night scene
-- Development log URL: `https://cora1022.github.io/blog/`
+- Development log URL: `https://cora1022.com/blog/`
 - Development log source folder: `../blog`
 - Project modal data: `assets/js/main.js`
 - Project/front-page rendering: `index.html` and `projects/index.html`
