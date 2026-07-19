@@ -12,7 +12,7 @@
 - `projects/index.html`: 프로젝트 목록 보조 페이지
 - `about.html`: 소개 보조 페이지
 - `assets/img/image.png`: OpenCLIP 기술 스택 아이콘
-- `assets/img/robot-project-thumbnail.png`: ROBOT 카드 이미지
+- `assets/img/robot-complete.jpg`: ROBOT 카드 이미지
 - `assets/img/urban-simulation-thumbnail.png`: 도시 폐기물 카드 이미지
 - `assets/img/martin-bennie-fFyIFm0pqNM-unsplash.jpg`: 배경 작업용 원본 이미지
 

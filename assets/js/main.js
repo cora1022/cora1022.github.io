@@ -122,7 +122,7 @@
       github: "https://github.com/cora1022/robot",
       page: "",
       youtube: "https://youtu.be/QIJOv5Q-LHc",
-      image: "assets/img/robot-project-thumbnail.png",
+      image: "assets/img/robot-complete.jpg",
       videos: [
         { title: "충돌 직전까지 앞으로 이동", url: "https://youtu.be/QIJOv5Q-LHc" },
         { title: "사물을 인식하고 뒤로 이동", url: "https://youtu.be/0o1b3L9IwOY" },
