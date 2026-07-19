@@ -1,6 +1,6 @@
-# 황영연 GitHub Pages
+# 황영연 프로필
 
-Static GitHub Pages portfolio hub for 황영연, with a GitHub repository gallery, project modals, skills, contact links, and an outbound development-log entry point.
+Static GitHub Pages profile for 황영연, with a GitHub repository gallery, project modals, skills, contact links, and an outbound development-log entry point.
 
 ## Local Preview
 
@@ -17,7 +17,9 @@ Main local entry points:
 This site is published from:
 
 - Repository: `https://github.com/cora1022/cora1022.github.io`
-- Pages URL: `https://cora1022.github.io/`
+- Public profile URL: `https://cora1022.com/profile/`
+- Origin Pages URL: `https://cora1022.github.io/`
+- Service home: `https://cora1022.com/` (`cora1022/service-page` on Netlify)
 - Deployment: GitHub Actions workflow at `.github/workflows/pages.yml`
 
 If this folder is recreated somewhere else, connect it with:
