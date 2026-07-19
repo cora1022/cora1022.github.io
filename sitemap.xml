@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://cora1022.com/</loc></url>
-  <url><loc>https://cora1022.com/about.html</loc></url>
-  <url><loc>https://cora1022.com/projects/</loc></url>
-  <url><loc>https://cora1022.com/privacy.html</loc></url>
-  <url><loc>https://cora1022.com/terms.html</loc></url>
-  <url><loc>https://image.cora1022.com/</loc></url>
+  <url><loc>https://cora1022.com/profile/</loc></url>
+  <url><loc>https://cora1022.com/profile/about.html</loc></url>
+  <url><loc>https://cora1022.com/profile/projects/</loc></url>
 </urlset>

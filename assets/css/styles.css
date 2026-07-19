@@ -805,7 +805,7 @@ main {
   background: var(--bg);
 }
 
-.pages-band {
+.services-band {
   background: var(--surface-elevated);
   border-block: 1px solid var(--line);
   transition:
@@ -1026,6 +1026,12 @@ main {
 
 .page-card-simulation {
   --page-accent: var(--amber);
+}
+
+.page-card-hub {
+  --page-accent: var(--teal);
+  grid-column: 1 / -1;
+  min-height: 230px;
 }
 
 .page-card:hover,
